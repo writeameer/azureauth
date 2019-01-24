@@ -13,8 +13,7 @@ import (
 
 func main() {
 
-	postURL := "https://login.microsoftonline.com/cloudoman.com/oauth2/token"
-
+	postURL := fmt.Sprintf("https://login.microsoftonline.com/%s/oauth2/token", os.Getenv("AZURE_TENANTNAME"))
 	resp, err := http.PostForm(postURL, url.Values{
 		"resource":   {"https://graph.windows.net"},
 		"client_id":  {os.Getenv("AZURE_CLIENT_ID")}, // This is the application ID of a "native application" you've create on Azure AD
